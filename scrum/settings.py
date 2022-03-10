@@ -42,10 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #    3rd party app
     'graphene_django',
+    'graphql_auth',
+    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
      
         # custom apps
     'apps.projectManagementApp',
+    'apps.users_app',
+    
 ]
+AUTH_USER_MODEL = 'users_app.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,7 +141,35 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Graphene schema
 GRAPHENE = {
-    "SCHEMA": "scrum.schema"
+    "SCHEMA": "scrum.schema",
+        'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
 }
+
+AUTHENTICATION_BACKENDS = [
+    # 'graphql_jwt.backends.JSONWebTokenBackend',
+    "graphql_auth.backends.GraphQLAuthBackend",
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+GRAPHQL_JWT = {
+    
+        "JWT_ALLOW_ANY_CLASSES": [
+        "graphql_auth.mutations.Register",
+    ],
+    "JWT_VERIFY_EXPIRATION": True,
+
+    # optional
+    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
+}
+
+GRAPHQL_AUTH = {
+    'LOGIN_ALLOWED_FIELDS': ['email', 'username'],
+    # ...
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 with open('.env') as f:
     SECRET_KEY = f.read().strip()
