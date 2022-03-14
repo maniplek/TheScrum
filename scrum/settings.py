@@ -138,5 +138,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GRAPHENE = {
     "SCHEMA": "scrum.schema"
 }
-with open('.env') as f:
-    SECRET_KEY = f.read().strip()
+ 
