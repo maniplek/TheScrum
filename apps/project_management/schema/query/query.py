@@ -23,3 +23,4 @@ class Query(graphene.AbstractType):
 
     def resolve_projects(self, info, **kwargs):
         return Project.objects.all()
+    

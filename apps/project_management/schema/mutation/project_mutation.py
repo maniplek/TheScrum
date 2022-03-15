@@ -36,3 +36,4 @@ class UpdateProject(graphene.Mutation):
             return UpdateProject(project=project)
 
         return UpdateProject(project=None)
+    
