@@ -1,41 +1,49 @@
-### **Thank you for your contribution to TheScrum repo.:+1:**
-### **Before submitting this PR into the dev branch, please make sure:**
-<br />
+**Description of Task to be completed?**
+
+- ...
+
+___
+
+#### Type of change
+
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Others (cosmetics, styling, improvements)
+- [ ] This change requires a documentation update
+
+#### How Has This Been Tested?
+
+___
+
+- [ ] Unit
+- [ ] Integration
+- [ ] End-to-end
 
 
+## Checklist:
 
-# Description
+___
 
-Include a summary of the change and which issue is fixed. 
+- [ ] My code follows the style guidelines of this project
+- [ ] I have linted my code prior to submission
+- [ ] I have made corresponding changes to the documentation 
+- [ ] My changes generate new warnings
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] New and existing unit pass locally with my changes
 
+___
+#### Link for testing
 
-## Pull request type
+## [Link]()
+___
 
-What types of changes does your code introduce to TheScrum?
+#### Story link
 
-- [x] Bugfix 
-- [ ] New feature 
-- [ ] Code style update (formatting, renaming)
-- [ ] Refactoring (no functional changes, no api changes)
-- [ ] Documentation content changes
-- [ ] Other (please describe):
+[Story_id]()
+___
 
-## Screenshots (if appropriate):
+#### Screenshots
 
-
-# Checklist:
-Put an x in the boxes that apply 
-
-- [ ] Code compiles correctly
-- [ ] My codes have one trailing space at the bottom of each file created
-- [ ] I have commented my code 
-- [ ] Requires migrations?
-- [ ] Requires dependency update?
-- [ ] Extended the README / documentation, if necessary
-- [ ] All new and existing tests passed
-- [ ] Any dependent changes have been merged and published in downstream modules
-
-#Further comments
-   *
-   *
-   *
+..
+____

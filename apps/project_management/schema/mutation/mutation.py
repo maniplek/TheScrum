@@ -6,4 +6,3 @@ from apps.project_management.schema.mutation.create_project_mutation import Crea
 class Mutation(graphene.ObjectType):
     create_project = CreateProject.Field()
     update_project=UpdateProject.Field()
-    
