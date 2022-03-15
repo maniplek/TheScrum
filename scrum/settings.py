@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     #    3rd party app
     'graphene_django',
      
@@ -91,7 +92,6 @@ DATABASES = {
         'PORT':os.environ.get('DATABASE_PORT'),
     }
 }
-print(DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
