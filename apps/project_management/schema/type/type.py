@@ -1,7 +1,7 @@
+import graphene
 from graphene_django import DjangoObjectType
 
-from apps.projectManagement.models import Project
-
+from apps.project_management.models import Project
 
 class ProjectType(DjangoObjectType):
     class Meta:

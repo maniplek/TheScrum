@@ -1,7 +1,7 @@
 import graphene
 
-from apps.projectManagement.models import Project
-from apps.projectManagement.schema.type.type import ProjectType
+from apps.project_management.models import Project
+from apps.project_management.schema.type.type import ProjectType
 
 
 class CreateProject(graphene.Mutation):

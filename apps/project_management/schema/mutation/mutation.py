@@ -1,6 +1,6 @@
 import graphene
 
-from apps.projectManagement.schema.mutation.create_project_mutation import CreateProject, UpdateProject
+from apps.project_management.schema.mutation.project_mutation import CreateProject, UpdateProject
 
 
 class Mutation(graphene.ObjectType):
