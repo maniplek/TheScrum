@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'graphene_django',
      
         # custom apps
-    'apps.projectManagementApp',
+    'apps.projectManagement',
 ]
 
 MIDDLEWARE = [
