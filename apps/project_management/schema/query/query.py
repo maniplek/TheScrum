@@ -1,8 +1,8 @@
 from graphene import ObjectType
 import graphene
-from apps.projectManagementApp.models import Project
+from apps.project_management.models import Project
 
-from apps.projectManagementApp.schema.type import ProjectType
+from apps.project_management.schema.type import ProjectType
 
 
 class Query(graphene.AbstractType):

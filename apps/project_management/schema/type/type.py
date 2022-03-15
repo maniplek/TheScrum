@@ -1,7 +1,7 @@
 import graphene
 from graphene_django import DjangoObjectType
 
-from apps.projectManagementApp.models import Project
+from apps.project_management.models import Project
 
 class ProjectInput(graphene.InputObjectType):
     id = graphene.ID()

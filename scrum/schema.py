@@ -1,7 +1,7 @@
 import graphene
 
-from apps.projectManagementApp.schema.query.query import Query as ProjectManagementQueries
-from apps.projectManagementApp.schema.mutation.mutation import Mutation as ProjectMutation
+from apps.project_management.schema.query.query import Query as ProjectManagementQueries
+from apps.project_management.schema.mutation.mutation import Mutation as ProjectMutation
 
 
 class Query(graphene.ObjectType, ProjectManagementQueries):
