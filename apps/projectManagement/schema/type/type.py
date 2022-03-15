@@ -8,4 +8,5 @@ class ProjectType(DjangoObjectType):
     class Meta:
         model = Project
         fields = ("id", "project_name")
+
    
