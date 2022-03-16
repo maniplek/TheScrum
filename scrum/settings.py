@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DATABASE_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", '127.0.0.1']
 
 
 # Application definition
@@ -207,8 +207,14 @@ GRAPHQL_AUTH = {
     },
      
     
-}
+},
+EMAIL_HOST = 'smtp.gmail.com',
+EMAIL_USE_TLS = True,
+EMAIL_PORT = 587,
+EMAIL_HOST_USER = 'maniplek81@gmail.com',
+EMAIL_HOST_PASSWORD = 'maniple@2020',
 
-SENDER_EMAIL = "nuer911@email.com"
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SENDER_EMAIL = "maniplek81@gmail.com",
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

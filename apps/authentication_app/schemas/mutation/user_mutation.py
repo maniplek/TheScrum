@@ -19,24 +19,24 @@ class CreateUser(graphene.Mutation):
 
     @classmethod
     def mutate(self, root, *args, **kwargs):
-        user:User =get_user_model().objects.create_user(
-            email=kwargs.get("email"),
-            password=kwargs.get("password"),
-            first_name=kwargs.get("first_name"),
-            last_name=kwargs.get("last_name"))
+        # user:User =get_user_model().objects.create_user(
+        #     email=kwargs.get("email"),
+        #     password=kwargs.get("password"),
+        #     first_name=kwargs.get("first_name"),
+        #     last_name=kwargs.get("last_name"))
             
         
-        if user:
-            context = {
-                "otp": user.OTP,
-                "first_name": user.first_name
-            }
-            email = SendMail(context=context,
-                             to_email=[user.email],
-                             subject='scrum email verification',
-                             temperate='email/activation_email.html')
-            email.send()
-            return CreateUser(user=user)
+        # if user:
+        context = {
+            "otp":4576,
+            "first_name": kwargs.get("first_name")
+        }
+        email = SendMail(context=context,
+                            to_email=[kwargs.get("email")],
+                            subject='scrum email verification',
+                            temperate='email/activation_email.html')
+        email.send()
+        return CreateUser(user=None)
         
-        else:
-            raise GraphQLError("Something went wrong")
+        # else:
+        #     raise GraphQLError("Something went wrong")
