@@ -16,13 +16,14 @@ class SendMail():
             self.template,
             self.context
         )
+
         message = EmailMessage(
             subject=self.subject,
             body=html_body,
             from_email = self.sender_mail,
             to=self.to_email
         )
-        message.content_subtype = 'hmtl'
+        message.content_subtype = 'html'
         return message
         
         
