@@ -26,17 +26,17 @@ class CreateUser(graphene.Mutation):
             last_name=kwargs.get("last_name"))
             
         
-        if user:
-            context = {
-                "otp": user.OTP,
-                "first_name": user.first_name
-            }
-            email = SendMail(context=context,
-                             to_email=[user.email],
-                             subject='scrum email verification',
-                             temperate='email/activation_email.html')
-            email.send()
-            return CreateUser(user=user)
+        # if user:
+        #     context = {
+        #         "otp": user.OTP,
+        #         "first_name": user.first_name
+        #     }
+        #     email = SendMail(context=context,
+        #                      to_email=[user.email],
+        #                      subject='scrum email verification',
+        #                      temperate='email/activation_email.html')
+        #     email.send()
+        return CreateUser(user=user)
         
-        else:
-            raise GraphQLError("Something went wrong")
+        # else:
+        #     raise GraphQLError("Something went wrong")
