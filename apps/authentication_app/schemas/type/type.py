@@ -20,5 +20,4 @@ class VerifiedType(DjangoObjectType):
 class RefreshOtpType(DjangoObjectType):
     class Meta:
         model = User
-        fields = ()
-    
+        fields = ("__all__")

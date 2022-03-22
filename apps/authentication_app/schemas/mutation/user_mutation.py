@@ -6,7 +6,6 @@ import email
 from email import message
 from email.policy import default
 from pickle import NONE
-from typing_extensions import Required
 import graphene
 from django.contrib.auth import get_user_model
 from graphql import GraphQLError
@@ -44,7 +43,7 @@ class CreateUser(graphene.Mutation):
             email = SendMail(context=context,
                              to_email=[user.email],
                              subject='scrum email verification',
-                             temperate='email/activation_email.html')
+                             template='email/activation_email.html')
             email.send()
             return CreateUser(user=user)
         
@@ -109,7 +108,7 @@ class RefreshOtp(graphene.Mutation):
             email = SendMail(context=context,
                              to_email=[user.email],
                              subject='scrum email verification',
-                             temperate='email/activation_email.html')
+                             template='email/activation_email.html')
             email.send()
             return RefreshOtp(message='The new otp have been sent to your email')
 
@@ -138,10 +137,10 @@ class RequestChangPassword(graphene.Mutation):
             email = SendMail(context=context,
                              to_email=[user.email],
                              subject='scrum change password',
-                             temperate='email/activation_email.html')
+                             template='email/activation_email.html')
             email.send()
             
-            return RequestChangPassword(message="Please check your emauil for changing the password")
+            return RequestChangPassword(message="Please check your email for changing the password")
 
 class ChangePassword(graphene.Mutation):
     class Arguments:
