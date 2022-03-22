@@ -1,19 +1,18 @@
+from datetime import datetime
 import math
 import random
+from xmlrpc.client import Fault
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from utils.otp_generator_helper import otp_genator
 from utils.validate_email import Validate_email as email_validation
 
 
-def otp_genator():
-    digits = "0123456789"
-    OTP = ""
-    for i in range(4) :
-        OTP += digits[math.floor(random.random() * 4)]
-    return OTP  
+
+  
 
 class UserAccountManager(BaseUserManager,models.Manager):
     def _create_user(self, email, password, first_name, last_name, **extra_fields):
@@ -48,6 +47,7 @@ class UserAccountManager(BaseUserManager,models.Manager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+   
     email = models.EmailField(_("Email address"), unique=True)
     is_verified = models.BooleanField(default=False, null=False)
     OTP =  models.IntegerField(unique=True)
@@ -63,7 +63,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=False,
         help_text=_("Designates whether this user should be treated as active."),
     )
-    date_joined = models.DateTimeField(_("Date joined"), default=timezone.now)
+    date_joined = models.DateTimeField(_("Date joined"), default=datetime.now())
+    # format = '%Y/%m/%d %H:%M %p'
+    otp_generated_time = models.DateTimeField(default=datetime.now())
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name"]
