@@ -1,7 +1,6 @@
 import graphene
 import graphql_jwt
 from apps.authentication_app.schemas.mutation.user_mutation import ChangePassword, CreateUser, IsVerified, RefreshOtp, RequestChangPassword
-# from graphql_auth import mutations
 from graphql_auth.schema import UserQuery, MeQuery
 
 class Mutation(graphene.ObjectType):
