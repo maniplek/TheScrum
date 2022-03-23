@@ -15,7 +15,7 @@ class UserType(DjangoObjectType):
 class VerifiedType(DjangoObjectType):
     class Meta:
         model = User
-        fields = ("otp", "email") 
+        fields = ("OTP", "email") 
 
 class RefreshOtpType(DjangoObjectType):
     class Meta:

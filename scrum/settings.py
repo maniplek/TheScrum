@@ -53,6 +53,7 @@ INSTALLED_APPS = [
         # custom apps
     'apps.project_management',
     'apps.authentication_app',
+    'apps.user_stories_app',
     
 ]
 AUTH_USER_MODEL = 'authentication_app.User'
@@ -160,6 +161,7 @@ GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
     # optional
     "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
+    "JWT_EXPIRATION_DELTA": timedelta(minutes=15)
 }
 
 GRAPHQL_AUTH = {
