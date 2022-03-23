@@ -5,7 +5,6 @@ from apps.authentication_app.schemas.type.type import UserType
 
 
 class Query(graphene.AbstractType):
-    me = graphene.Field(UserType)
     users = graphene.List(UserType)
     
 
