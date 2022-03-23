@@ -53,6 +53,7 @@ INSTALLED_APPS = [
         # custom apps
     'apps.project_management',
     'apps.authentication_app',
+    'apps.user_stories_app',
     
 ]
 AUTH_USER_MODEL = 'authentication_app.User'

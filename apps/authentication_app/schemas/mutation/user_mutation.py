@@ -27,7 +27,7 @@ class CreateUser(graphene.Mutation):
 
     @classmethod
     def mutate(self, root, *args, **kwargs):
-        user:User =get_user_model().objects.create_user(
+        user:User = get_user_model().objects.create_user(
             email=kwargs.get("email"),
             password=kwargs.get("password"),
             first_name=kwargs.get("first_name"),
