@@ -17,7 +17,7 @@ class CreateProject(graphene.Mutation):
     project = graphene.Field(ProjectType)
 
     @login_required
-    def mutate(self, root, info, project_name):
+    def mutate(self, info, project_name):
         user = info.context.user
 
         if user.is_anonymous:
