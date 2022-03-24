@@ -1,7 +1,9 @@
+import email
 import graphene
 from apps.project_management.models import Project
 
 from apps.project_management.schema.type.type import ProjectType
+from graphql_jwt.decorators import login_required
 
 
 class Query(graphene.AbstractType):
@@ -10,15 +12,25 @@ class Query(graphene.AbstractType):
         ProjectType, name=graphene.String(required=True))
     projects = graphene.List(ProjectType)
 
-    def resolve_project_by_id(self, info, id):
-        if id is not None:
-            return Project.objects.get(pk=id)
-        return None
+    def resolve_project_by_name(self, info):
 
-    def resolve_project_by_name(self, info, name):
-        if name is not None:
-            return Project.objects.get(project_name=name)
-        return None
+        user = info.context.user
 
+        if user.is_anonymous:
+            raise Exception('You must be logged to create a project!')
+
+        if user:
+            projects: Project = Project.objects.filter(project_owner=user)
+            return projects.project_name
+
+    @login_required
     def resolve_projects(self, info, **kwargs):
-        return Project.objects.all()
+
+        user = info.context.user
+
+        if user.is_anonymous:
+            raise Exception('You must be logged to create a project!')
+
+        if user:
+            projects: Project = Project.objects.filter(project_owner=user)
+            return projects

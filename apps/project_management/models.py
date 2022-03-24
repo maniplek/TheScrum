@@ -9,7 +9,7 @@ class Project (models.Model):
     project_owner = models.ForeignKey(
         User, on_delete=models.CASCADE)
     contributors = models.ManyToManyField(
-        User, through='Contribution',related_name="contributors")
+        User, through='Contribution', related_name="contributors")
 
     def __str__(self):
         return self.project_name

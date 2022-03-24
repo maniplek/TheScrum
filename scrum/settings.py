@@ -36,24 +36,25 @@ ALLOWED_HOSTS = ["localhost", '127.0.0.1']
 
 # Application definition
 
-INSTALLED_APPS = [ 
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     #    3rd party app
     'graphene_django',
     'graphql_auth',
     'django_filters',
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
-     
-        # custom apps
+
+    # custom apps
     'apps.project_management',
     'apps.authentication_app',
-    
+
+
 ]
 AUTH_USER_MODEL = 'authentication_app.User'
 
@@ -98,7 +99,7 @@ DATABASES = {
         'USER': os.environ.get('DATABASE_USER'),
         'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
         'HOST': os.environ.get('DATABASE_HOST'),
-        'PORT':os.environ.get('DATABASE_PORT'),
+        'PORT': os.environ.get('DATABASE_PORT'),
     }
 }
 
@@ -146,7 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Graphene schema
 GRAPHENE = {
     "SCHEMA": "scrum.schema",
-        'MIDDLEWARE': [
+    'MIDDLEWARE': [
         'graphql_jwt.middleware.JSONWebTokenMiddleware',
     ],
 }
@@ -158,56 +159,57 @@ AUTHENTICATION_BACKENDS = [
 
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
-    # optional
+    "JWT_EXPIRATION_DELTA": timedelta(minutes=15),
+    "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=7),
     "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
 }
 
 GRAPHQL_AUTH = {
     'LOGIN_ALLOWED_FIELDS': ['email', 'email'],
     'ALLOW_LOGIN_NOT_VERIFIED': True,
-    'ALLOW_LOGIN_WITH_SECONDARY_EMAIL':True,
-    'ALLOW_PASSWORDLESS_REGISTRATION':False,
-    'ALLOW_DELETE_ACCOUNT':False,
-    'SEND_ACTIVATION_EMAIL':True,
-    'SEND_PASSWORD_SET_EMAIL':False,
-    'REGISTER_MUTATION_FIELDS':['email', 'email'],
-    'REGISTER_MUTATION_FIELDS_OPTIONAL':[],
-    'UPDATE_MUTATION_FIELDS':["first_name", "last_name"],
-    'CUSTOM_ERROR_TYPE':'graphql_auth.types.ExpectedErrorType',  
-    'USER_NODE_FILTER_FIELDS':{
-    "email": ["exact",],
-    "username": ["exact", "icontains", "istartswith"],
-    "is_active": ["exact"],
-    "status__archived": ["exact"],
-    "status__verified": ["exact"],
-    "status__secondary_email": ["exact"],
-},
-    'USER_NODE_EXCLUDE_FIELDS':["password", "is_superuser"],
-    'EXPIRATION_ACTIVATION_TOKEN':timedelta(days=7),
-    'EXPIRATION_PASSWORD_RESET_TOKEN':timedelta(hours=1),
-    'EXPIRATION_SECONDARY_EMAIL_ACTIVATION_TOKEN':timedelta(hours=1),
-    'EXPIRATION_PASSWORD_SET_TOKEN':timedelta(days=7),
-    'EMAIL_FROM':'nuel@email.com',
-    'ACTIVATION_PATH_ON_EMAI':'activate',
-    'PASSWORD_RESET_PATH_ON_EMAIL':'password-reset',
-    'PASSWORD_SET_PATH_ON_EMAIL':"password-set",
-    'ACTIVATION_SECONDARY_EMAIL_PATH_ON_EMAIL':"activate",
+    'ALLOW_LOGIN_WITH_SECONDARY_EMAIL': True,
+    'ALLOW_PASSWORDLESS_REGISTRATION': False,
+    'ALLOW_DELETE_ACCOUNT': False,
+    'SEND_ACTIVATION_EMAIL': True,
+    'SEND_PASSWORD_SET_EMAIL': False,
+    'REGISTER_MUTATION_FIELDS': ['email', 'email'],
+    'REGISTER_MUTATION_FIELDS_OPTIONAL': [],
+    'UPDATE_MUTATION_FIELDS': ["first_name", "last_name"],
+    'CUSTOM_ERROR_TYPE': 'graphql_auth.types.ExpectedErrorType',
+    'USER_NODE_FILTER_FIELDS': {
+        "email": ["exact", ],
+        "username": ["exact", "icontains", "istartswith"],
+        "is_active": ["exact"],
+        "status__archived": ["exact"],
+        "status__verified": ["exact"],
+        "status__secondary_email": ["exact"],
+    },
+    'USER_NODE_EXCLUDE_FIELDS': ["password", "is_superuser"],
+    'EXPIRATION_ACTIVATION_TOKEN': timedelta(days=7),
+    'EXPIRATION_PASSWORD_RESET_TOKEN': timedelta(hours=1),
+    'EXPIRATION_SECONDARY_EMAIL_ACTIVATION_TOKEN': timedelta(hours=1),
+    'EXPIRATION_PASSWORD_SET_TOKEN': timedelta(days=7),
+    'EMAIL_FROM': 'nuel@email.com',
+    'ACTIVATION_PATH_ON_EMAI': 'activate',
+    'PASSWORD_RESET_PATH_ON_EMAIL': 'password-reset',
+    'PASSWORD_SET_PATH_ON_EMAIL': "password-set",
+    'ACTIVATION_SECONDARY_EMAIL_PATH_ON_EMAIL': "activate",
     "EMAIL_ASYNC_TASK": "path/to/file.graphql_auth_async_email",
-    'EMAIL_SUBJECT_ACTIVATION':'email/activation_subject.txt',
-    'EMAIL_SUBJECT_ACTIVATION_RESEND':"email/activation_subject.txt",
-    "EMAIL_SUBJECT_SECONDARY_EMAIL_ACTIVATION":"email/activation_subject.txt",
-    "EMAIL_SUBJECT_PASSWORD_RESET":"email/password_reset_subject.txt",
-    'EMAIL_SUBJECT_PASSWORD_SET':"email/password_set_subject.txt",
-    'EMAIL_TEMPLATE_ACTIVATION':"email/activation_email.html",
-    'EMAIL_TEMPLATE_ACTIVATION_RESEND':"email/activation_email.html",
-    'EMAIL_TEMPLATE_SECONDARY_EMAIL_ACTIVATION':"email/activation_email.html",
-    'EMAIL_TEMPLATE_PASSWORD_RESET':"email/password_reset_email.html",
-    'EMAIL_TEMPLATE_PASSWORD_SET':"email/password_set_email.html",
-        "EMAIL_TEMPLATE_VARIABLES": {
+    'EMAIL_SUBJECT_ACTIVATION': 'email/activation_subject.txt',
+    'EMAIL_SUBJECT_ACTIVATION_RESEND': "email/activation_subject.txt",
+    "EMAIL_SUBJECT_SECONDARY_EMAIL_ACTIVATION": "email/activation_subject.txt",
+    "EMAIL_SUBJECT_PASSWORD_RESET": "email/password_reset_subject.txt",
+    'EMAIL_SUBJECT_PASSWORD_SET': "email/password_set_subject.txt",
+    'EMAIL_TEMPLATE_ACTIVATION': "email/activation_email.html",
+    'EMAIL_TEMPLATE_ACTIVATION_RESEND': "email/activation_email.html",
+    'EMAIL_TEMPLATE_SECONDARY_EMAIL_ACTIVATION': "email/activation_email.html",
+    'EMAIL_TEMPLATE_PASSWORD_RESET': "email/password_reset_email.html",
+    'EMAIL_TEMPLATE_PASSWORD_SET': "email/password_set_email.html",
+    "EMAIL_TEMPLATE_VARIABLES": {
         "frontend_domain": "the-frontend.com"
     },
-     
-    
+
+
 }
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
