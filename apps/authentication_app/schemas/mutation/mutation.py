@@ -1,6 +1,6 @@
 import graphene
 import graphql_jwt
-from apps.authentication_app.schemas.mutation.user_mutation import ChangePassword, CreateUser, IsVerified, RefreshOtp, RequestChangPassword
+from apps.authentication_app.schemas.mutation.user_mutation import ChangePassword, CreateUser, IsVerified, RefreshOtp, RequestChangePassword
 from graphql_auth.schema import UserQuery, MeQuery
 
 class Mutation(graphene.ObjectType):
@@ -10,6 +10,5 @@ class Mutation(graphene.ObjectType):
     refresh_otp = RefreshOtp.Field()
     Verify_token = graphql_jwt.Verify.Field()
     refresh_token = graphql_jwt.Refresh.Field()
-    request_change_password = RequestChangPassword.Field()
+    request_change_password = RequestChangePassword.Field()
     change_password =ChangePassword.Field()
-    
