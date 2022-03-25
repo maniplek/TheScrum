@@ -5,14 +5,13 @@ from apps.authentication_app.schemas.type.type import UserType
 
 
 class Query(graphene.AbstractType):
-    me = graphene.Field(UserType)
     users = graphene.List(UserType)
     
 
     def resolve_users(self, info):
         return User.objects.all()
       
-
+    @login_required
     def resolve_viewer(self, info, **kwargs):
         user = info.context.user
         if not user.is_authenticated:
