@@ -148,11 +148,6 @@ dmypy.json
 cython_debug/
 
 # vscode
-*.vscode/*
-*.vscode/settings.json
-*.vscode/tasks.json
-*.vscode/launch.json
-*.vscode/extensions.json
 *.code-workspace
 .history/
 
@@ -172,3 +167,7 @@ Control.ca-list
 Control.ca-bundle
 Control.system-ca-bundle
 GitHub.sublime-settings
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
+branch_structure.json
